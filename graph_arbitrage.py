@@ -35,7 +35,8 @@ def bellman_ford_negative_cycles(g, s):
     seen = defaultdict(lambda: False)
 
     for u, v in g.edges():
-        weight = g[u][v]["weight"]
+        t = 0.001 # Transaction fee , 0.1% default
+        weight = g[u][v]["weight"]/(1+t)
         # If we can relax further, there must be a neg-weight cycle
         if seen[v]:
             continue
